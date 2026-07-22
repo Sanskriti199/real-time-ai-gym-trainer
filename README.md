@@ -15,7 +15,7 @@ The application analyzes body posture through a live webcam feed, detects suppor
 ## Live Demo
 
 **Landing Page:**  
-https://my-ai-realtime-gym-coach.netlify.app/
+Coming Soon
 
 **AI Gym Coach App:**  
 Coming Soon
