@@ -91,7 +91,7 @@ class VideoProcessorClass(VideoProcessorBase):
             "NO POSE DETECTED",
             (30, 50),
             cv2.FONT_HERSHEY_SIMPLEX,
-            1,
+            0.9,
             (0, 255, 0),
             2,
             cv2.LINE_AA,
@@ -100,9 +100,9 @@ class VideoProcessorClass(VideoProcessorBase):
         cv2.putText(
             img,
             "PLEASE FACE THE CAMERA",
-            (30, 100),
+            (30, 90),
             cv2.FONT_HERSHEY_SIMPLEX,
-            1,
+            0.7,
             (0, 255, 0),
             2,
             cv2.LINE_AA,
@@ -210,11 +210,19 @@ class VideoProcessorClass(VideoProcessorBase):
             if detector:
                 metrics=detector.process(landmarks)
 
+                metrics["pose_detected"]=True
+
                 self._draw_overlays(image,metrics,ex_type)
 
                 self.set_latest_metrics(metrics)
         else:
             self._draw_no_pose_warnings(image)
+
+            with self._lock:
+                if self._latest_matrics is not None:
+                    self._latest_matrics["pose_detected"]=False
+                else:
+                    self._latest_matrics={"pose_detected":False}
 
         return av.VideoFrame.from_ndarray(image, format="bgr24")
     
