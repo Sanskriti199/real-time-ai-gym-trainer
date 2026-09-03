@@ -1,24 +1,35 @@
-# AI Real-Time Gym Coach
+# 🏋️ AI Real-Time Gym Coach
 
-An AI-powered fitness coach that uses Computer Vision and Large Language Models to analyze exercises in real time. The application tracks body posture, counts repetitions, monitors workout progress, and provides AI-generated voice feedback for a smarter workout experience.
+> An AI-powered fitness coach that uses Computer Vision and Large Language Models to analyze exercises in real time, track performance, and provide intelligent coaching feedback.
 
----
-
-## Features
-
-- Real-time pose detection
-- Automatic repetition counting
-- Form correction
-- AI-powered workout coaching
-- Voice feedback
-- Workout progress tracking
-- User authentication
-- Workout history
-- Multi-exercise support
+🚀 **[Try AI Real-Time Gym Coach](https://ai-apna-coach.netlify.app/)**
 
 ---
 
-## Supported Exercises
+## 📌 Overview
+
+**AI Real-Time Gym Coach** is an intelligent fitness application that combines **Computer Vision, Pose Estimation, and Large Language Models** to provide real-time workout assistance.
+
+The application uses a webcam to analyze body posture, count repetitions, evaluate exercise form, provide AI-generated coaching feedback, and maintain workout progress and history.
+
+---
+
+## ✨ Features
+
+- 🎥 Real-time pose detection
+- 🔢 Automatic repetition counting
+- 🧍 Exercise form correction
+- 🤖 AI-powered workout coaching
+- 🔊 AI-generated voice feedback
+- 📊 Workout progress tracking
+- 🔐 User authentication
+- 📜 Workout history
+- 🏋️ Multi-exercise support
+- ⚡ Real-time webcam processing
+
+---
+
+## 🏋️ Supported Exercises
 
 - Squats
 - Push-ups
@@ -28,7 +39,7 @@ An AI-powered fitness coach that uses Computer Vision and Large Language Models 
 
 ---
 
-## Tech Stack
+## 🛠️ Tech Stack
 
 - **Python** – Core programming language
 - **Streamlit** – Interactive web application
@@ -43,23 +54,74 @@ An AI-powered fitness coach that uses Computer Vision and Large Language Models 
 
 ---
 
-## How It Works
+## ⚙️ How It Works
 
 1. User logs into the application.
 2. Selects an exercise, sets, and repetitions.
 3. Webcam starts through WebRTC.
 4. MediaPipe detects body landmarks.
 5. The application counts repetitions and evaluates form.
-6. AI generates coaching feedback.
-7. Voice feedback is played.
-8. Workout progress is tracked and stored.
+6. Groq LLM generates personalized coaching feedback.
+7. Voice feedback is generated using gTTS.
+8. Workout progress and history are stored in SQLite.
 
 ---
 
-## Future Enhancements
+## 🚀 Live Application
 
-- Workout analytics dashboard
-- Calories burned estimation
-- Personalized workout plans
-- Additional exercise support
-- Cloud deployment
+### 🌐 Main Application
+
+**[https://ai-apna-coach.netlify.app/](https://ai-apna-coach.netlify.app/)**
+
+The main web interface for **AI Real-Time Gym Coach**.
+
+### 🤖 AI Coach
+
+**[https://real-time-ai-coach.streamlit.app/](https://real-time-ai-coach.streamlit.app/)**
+
+Launch the real-time AI workout coaching environment.
+
+---
+
+## 🧩 Application Architecture
+
+```text
+                    AI REAL-TIME GYM COACH
+                             │
+                             ▼
+                    Main Web Application
+                          Netlify
+                             │
+                             ▼
+                    AI Coaching Application
+                         Streamlit
+                             │
+                 ┌───────────┴───────────┐
+                 ▼                       ▼
+             WebRTC Camera          User Input
+                 │
+                 ▼
+             OpenCV + MediaPipe
+                 │
+                 ▼
+          Pose & Exercise Analysis
+                 │
+        ┌────────┴─────────┐
+        ▼                  ▼
+  Rep Counting        Form Analysis
+        │                  │
+        └────────┬─────────┘
+                 ▼
+              Groq LLM
+                 │
+                 ▼
+          AI Coaching Feedback
+                 │
+                 ▼
+              gTTS Voice
+                 │
+                 ▼
+          Workout Progress
+                 │
+                 ▼
+               SQLite
